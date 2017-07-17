@@ -4,26 +4,12 @@
 
   $('#buttons .button').on('click', ajaxCall);
 
-  $('#submit').on('click', function(){
-
-    var input = $('#search').val();
-
-      var el = $('<li>');
-      var link = $('<a>');
-
-      var p = $('<p>');
-          p.text(input);
-          link.append(p);
-        el.addClass('button');
-        el.val(input);
-        el.append(link);
-    $('#buttons').append(el);
-
-    $('#search').val('');
-
-    // $('#buttons .button').on('click', ajaxCall);
-
-  });
+  $('#submit').on('click', addButton);
+  $('#search').on('keyup', function (e) {
+    if (e.keyCode == 13) {
+      addButton();
+    }
+});
 
   $(document).on('click','.button', ajaxCall);
   $(document).on('click','.gif',  function(){
@@ -94,4 +80,21 @@
 
 
     });
+  }
+
+  function addButton(){
+    var input = $('#search').val();
+
+      var el = $('<li>');
+      var link = $('<a>');
+
+      var p = $('<p>');
+          p.text(input);
+          link.append(p);
+        el.addClass('button');
+        el.val(input);
+        el.append(link);
+    $('#buttons').append(el);
+
+    $('#search').val('');
   }
