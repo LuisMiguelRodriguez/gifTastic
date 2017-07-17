@@ -2,17 +2,11 @@
 
   appendButtons(topics);
 
-
   $('#buttons .button').on('click', ajaxCall);
-
-
-
-// Response returns an object back with an object with a property that is an arrray
 
   $('#submit').on('click', function(){
 
     var input = $('#search').val();
-    console.log($(this));
     var el = $('<div>');
       el.addClass('btn btn-primary btn-lg button');
       el.text(input);
@@ -61,11 +55,29 @@
         var still = data.data[i].images.original_still.url;
         var img = $('<img>');
             img.attr('src', still);
+            img.attr('class', 'gif');
             img.attr('style','width:150px;width:150px;')
+            img.attr('data-gif', gif);
             $('#gifs').append(img);
         console.log("success got data", data);
         console.log(data.data[0].images.original.url);
         console.log(data.data[0].images.original_still.url);
       }
+
+      $('#gifs .gif').on('click',  function(){
+        console.log($(this));
+        console.log('----------Original values --------------');
+        var still = $(this)[0].src;
+        var gif = $(this)[0].dataset.gif;
+        console.log(still);
+        console.log(gif);
+        console.log('----------swapping values --------------');
+        $(this)[0].src = gif;
+        $(this)[0].dataset.gif = still;
+
+
+
+      });
+
     });
   }
