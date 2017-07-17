@@ -19,6 +19,8 @@
         el.append(link);
     $('#buttons').append(el);
 
+    $('#search').val('');
+
     // $('#buttons .button').on('click', ajaxCall);
 
   });
@@ -71,11 +73,11 @@
   function ajaxCall (){
     var topic = $(this).text();
     console.log(topic);
-    var xhr = $.get("http://api.giphy.com/v1/gifs/search?q="+ topic+"&api_key=c7fd486fe62d4cfdb33110a0b2750064&limit=5");
+    var xhr = $.get("http://api.giphy.com/v1/gifs/search?q="+ topic +"&api_key=c7fd486fe62d4cfdb33110a0b2750064&limit=10");
     xhr.done(function(data) {
 
       $('#gifs').html('');
-      for( var i = 0; i < 5; i++){
+      for( var i = 0; i < 10; i++){
         var gif = data.data[i].images.original.url;
         var still = data.data[i].images.original_still.url;
         var img = $('<img>');

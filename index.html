@@ -10,10 +10,21 @@
   <body>
     <ul id="buttons"></ul>
     <!-- <div id="buttons"></div> -->
+
+    <form class="form-inline">
+      <div class="form-group">
+        <label class="sr-only" for="exampleInputAmount">Topic .....</label>
+        <div class="input-group">
+          <input id="search" type="text" class="form-control" id="exampleInputAmount" placeholder="Enter Topic ...">
+        </div>
+      </div>
+      <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
     <div id="gifs"></div>
 
 
-    <input id="search" type="text" placeholder="Please type in a topic ..."><span id="submit"class='btn btn-primary'>Submit</span>
+    <!-- <input id="search" type="text" placeholder="Please type in a topic ..."><span id="submit"class='btn btn-primary'>Submit</span> -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
     <script src="app.js" charset="utf-8"></script>
