@@ -63,6 +63,7 @@
         // console.log(data.data[0].images.original.url);
         // console.log(data.data[0].images.original_still.url);
         gifContainer(still, gif);
+        // tvContainer(still, gif);
       }
 
     });
@@ -90,8 +91,23 @@
     var container = $('<div>');
     container.addClass('col-sm-3');
     container.html(
-      '<div class="thumbnail"><img src="' + still + '" data-gif="' + gif + '" ><div class="caption"><h4>Rating</h4></div></div></div>'
+      '<div class="thumbnail"><img class="gif" src="' + still + '" data-gif="' + gif + '" ><div class="caption"><h4>Rating</h4></div></div></div>'
     );
 
     $('#thumbnails').append(container);
+
+  }
+
+  function tvContainer (still, gif){
+    var wrapper = $('<div>');
+    wrapper.addClass('box col-sm-3');
+
+    var container = $('<div>');
+    container.addClass('tvNoiseContain');
+    container.html(
+      '<img src="tv.svg" alt="" class="tv"><div class="noiseContain"><img src="'+ still +'" style="width:100px;height:100px;"><div></div></div>'
+    );
+    wrapper.append(container);
+
+    $('#thumbnails').append(wrapper);
   }
