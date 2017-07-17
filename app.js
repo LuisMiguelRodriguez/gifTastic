@@ -7,13 +7,32 @@
   $('#submit').on('click', function(){
 
     var input = $('#search').val();
-    var el = $('<div>');
-      el.addClass('btn btn-primary btn-lg button');
-      el.text(input);
 
+      var el = $('<li>');
+      var link = $('<a>');
+          link.text(input);
+      var h2 = $('<h2>');
+          link.append(link);
+        el.addClass('button');
+        el.val(input);
+        el.append(link);
     $('#buttons').append(el);
 
-    $('#buttons .button').on('click', ajaxCall);
+    // $('#buttons .button').on('click', ajaxCall);
+
+  });
+
+  $(document).on('click','.button', ajaxCall);
+  $(document).on('click','.gif',  function(){
+    console.log($(this));
+    console.log('----------Original values --------------');
+    var still = $(this)[0].src;
+    var gif = $(this)[0].dataset.gif;
+    console.log(still);
+    console.log(gif);
+    console.log('----------swapping values --------------');
+    $(this)[0].src = gif;
+    $(this)[0].dataset.gif = still;
 
   });
 
@@ -34,9 +53,14 @@
 
   function appendButtons (array){
     for(var i = 0; i < array.length; i++){
-      var el = $('<div>');
-        el.addClass('btn btn-primary btn-lg button');
-        el.text(array[i]);
+      var el = $('<li>');
+      var link = $('<a>');
+          link.text(array[i]);
+      var h2 = $('<h2>');
+          link.append(link);
+        el.addClass('button');
+        el.val(array[i]);
+        el.append(link);
 
       $('#buttons').append(el);
     }
@@ -64,20 +88,7 @@
         console.log(data.data[0].images.original_still.url);
       }
 
-      $('#gifs .gif').on('click',  function(){
-        console.log($(this));
-        console.log('----------Original values --------------');
-        var still = $(this)[0].src;
-        var gif = $(this)[0].dataset.gif;
-        console.log(still);
-        console.log(gif);
-        console.log('----------swapping values --------------');
-        $(this)[0].src = gif;
-        $(this)[0].dataset.gif = still;
 
-
-
-      });
 
     });
   }
