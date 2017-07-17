@@ -9,7 +9,7 @@
     if (e.keyCode == 13) {
       addButton();
     }
-});
+  });
 
   $(document).on('click','.button', ajaxCall);
   $(document).on('click','.gif',  function(){
@@ -24,19 +24,6 @@
     $(this)[0].dataset.gif = still;
 
   });
-
-  function createButtons(array){
-    for(var i = 0; i < array.length; i++){
-
-      var gif = data.data[i].images.original.url;
-      var still = data.data[i].images.orinal_still.url;
-
-      var el = $('img');
-      el.attr('src', still);
-      el.attr('data-gif', gif);
-      }
-
-  }
 
   // creates buttons from an array with strings
 
@@ -62,22 +49,21 @@
     var xhr = $.get("http://api.giphy.com/v1/gifs/search?q="+ topic +"&api_key=c7fd486fe62d4cfdb33110a0b2750064&limit=10");
     xhr.done(function(data) {
 
-      $('#gifs').html('');
+      $('#thumbnails').html('');
       for( var i = 0; i < 10; i++){
         var gif = data.data[i].images.original.url;
         var still = data.data[i].images.original_still.url;
-        var img = $('<img>');
-            img.attr('src', still);
-            img.attr('class', 'gif');
-            img.attr('style','width:150px;width:150px;')
-            img.attr('data-gif', gif);
-            $('#gifs').append(img);
-        console.log("success got data", data);
-        console.log(data.data[0].images.original.url);
-        console.log(data.data[0].images.original_still.url);
+        // var img = $('<img>');
+        //     img.attr('src', still);
+        //     img.attr('class', 'gif');
+        //     img.attr('style','width:150px;width:150px;')
+        //     img.attr('data-gif', gif);
+        //     $('#gifs').append(img);
+        // console.log("success got data", data);
+        // console.log(data.data[0].images.original.url);
+        // console.log(data.data[0].images.original_still.url);
+        gifContainer(still, gif);
       }
-
-
 
     });
   }
@@ -97,4 +83,15 @@
     $('#buttons').append(el);
 
     $('#search').val('');
+  }
+
+
+  function gifContainer (still, gif){
+    var container = $('<div>');
+    container.addClass('col-sm-3');
+    container.html(
+      '<div class="thumbnail"><img src="' + still + '" data-gif="' + gif + '" ><div class="caption"><h4>Rating</h4></div></div></div>'
+    );
+
+    $('#thumbnails').append(container);
   }
