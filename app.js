@@ -10,9 +10,10 @@
 
       var el = $('<li>');
       var link = $('<a>');
-          link.text(input);
-      var h2 = $('<h2>');
-          link.append(link);
+
+      var p = $('<p>');
+          p.text(input);
+          link.append(p);
         el.addClass('button');
         el.val(input);
         el.append(link);
@@ -55,9 +56,9 @@
     for(var i = 0; i < array.length; i++){
       var el = $('<li>');
       var link = $('<a>');
-          link.text(array[i]);
-      var h2 = $('<h2>');
-          link.append(link);
+      var p = $('<p>');
+          p.text(array[i]);
+          link.append(p);
         el.addClass('button');
         el.val(array[i]);
         el.append(link);
