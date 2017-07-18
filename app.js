@@ -46,7 +46,7 @@
   function ajaxCall (){
     var topic = $(this).text();
     console.log(topic);
-    var xhr = $.get("http://api.giphy.com/v1/gifs/search?q="+ topic +"&api_key=c7fd486fe62d4cfdb33110a0b2750064&limit=10");
+    var xhr = $.get("https://api.giphy.com/v1/gifs/search?q="+ topic +"&api_key=c7fd486fe62d4cfdb33110a0b2750064&limit=10");
     xhr.done(function(data) {
       console.log(data);
 
