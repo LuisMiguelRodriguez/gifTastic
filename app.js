@@ -48,11 +48,14 @@
     console.log(topic);
     var xhr = $.get("http://api.giphy.com/v1/gifs/search?q="+ topic +"&api_key=c7fd486fe62d4cfdb33110a0b2750064&limit=10");
     xhr.done(function(data) {
+      console.log(data);
 
       $('#thumbnails').html('');
       for( var i = 0; i < 10; i++){
         var gif = data.data[i].images.original.url;
         var still = data.data[i].images.original_still.url;
+        var rating = data.data[i].rating;
+        console.log(rating);
         // var img = $('<img>');
         //     img.attr('src', still);
         //     img.attr('class', 'gif');
@@ -62,7 +65,7 @@
         // console.log("success got data", data);
         // console.log(data.data[0].images.original.url);
         // console.log(data.data[0].images.original_still.url);
-        gifContainer(still, gif);
+        gifContainer(still, gif, rating);
         // tvContainer(still, gif);
       }
 
@@ -87,11 +90,11 @@
   }
 
 
-  function gifContainer (still, gif){
+  function gifContainer (still, gif, rating){
     var container = $('<div>');
     container.addClass('col-sm-3');
     container.html(
-      '<div class="thumbnail"><img class="gif" src="' + still + '" data-gif="' + gif + '" ><div class="caption"><h4>Rating</h4></div></div></div>'
+      '<div class="thumbnail"><img class="gif" src="' + still + '" data-gif="' + gif + '" ><div class="caption"><h4>Rating: '+ rating.toUpperCase() +'</h4></div></div></div>'
     );
 
     $('#thumbnails').append(container);
